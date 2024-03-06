@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Documentation</title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Panduan penggunaan API Visitor: Mendaftarkan domain baharu, melihat jumlah visitor harian, menambah visitor, dan lainnya.">
+    <link rel="icon" href="/logo.png" type="image/x-icon">
+    <!-- Tambahkan link Bootstrap CSS di sini -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+            width: 100%;
+        }
+
+        header {
+            background-color: #eb4b85 !important;
+            color: rgb(255, 255, 69);
+            padding: 1px;
+            text-align: center;
+
+           opacity: 0; /* Atur opasitas awal ke 0 */
+    animation: fadeIn 1s ease-in-out forwards; 
+        }
+      
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        code {
+            font-family: monospace;
+            background-color: #f2f2f2;
+            padding: 2px 4px;
+            border: 1px solid #ddd;
+            font-size: 12px;
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+           animation: fadeInUp 1s ease; /* Menambahkan animasi fadeInUp */
+        }
+
+        .note {
+            color: #777;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            color: rgb(255, 255, 69);
+            bottom: 0;
+            width: 100%;
+            background-color: #eb4b85 !important;
+        }
+
+        #custom-code {
+            background-color: #d9f1d9;
+            padding: 2px 4px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        /* Animasi fadeInUp */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+      @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1; /* Akhiri dengan opasitas 1 */
+    }
+}
+
+      .status-icon {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    ext-align: center;
+    color: white; /* Warna hijau untuk ikon */
+}
+
+.status-icon i {
+    font-size: 24px;
+    margin-right: 5px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="display-8">API Visitor - User Guide</h2>
+         <div class="status-icon">
+        <i class="fas fa-sync-alt fa-spin"></i> Status Server: Active 
+    </div>
+    </header>
+
+    <div class="container">
+      
+      <p><span class="badge badge-primary">Information: </span> Jika ada error dengan api ini sila lapor ke <a href="https://api.whatsapp.com/send?phone=60146351257" target="_blank">Zeyz</a></p><hr>
+        <h3>Daftar Endpoint</h3>
+        <ul>
+            <li><strong>GET /api/domain/register</strong>: Mendaftarkan Domain baharu.</li>
+            <li><strong>GET /api/domain/delete</strong>: Menghapus Domain </li>
+            <li><strong>GET /api/views</strong>: Mendapatkan jumlah visitor harian dan total berdasarkan domain.</li>
+            <li><strong>GET /api/views/add</strong>: Menambah visitor berdasarkan domain</li>
+        </ul>
+        <hr>
+        
+        <!-- Tambahkan deskripsi endpoint lainnya di sini -->
+
+        <h3>Menggunakan Endpoint GET /api/domain/register</h3>
+        <p>Anda dapat menggunakan endpoint ini untuk mendaftarkan api visitor baru berdasarkan domain dan key. Gunakan parameter query <code>domain</code> untuk menentukan domain yang ingin Anda daftarkan, dan Gunakan parameter query <code>key</code> untuk menentukan kunci / password yang ingin Anda daftarkan atau kebutuhan untuk delete domain</p>
+        <p>Contoh penggunaan:</p>
+        <code>https://visitor.api.zeyzofc.com/api/domain/register?domain=google.com&key=kunci_anda</code>
+        <p>Respons:</p>
+        <pre id="custom-code">
+{
+    "message": "User registered successfully",
+    "user": {
+        "total": 0,
+        "daily": 0,
+        "domain": "google.com",
+        "key": "kunci_anda"
+    }
+}
+ </pre>
+        <!-- Tambahkan deskripsi endpoint lainnya di sini -->
+
+        <p class="note">Catatan: Pastikan untuk selalu menggunakan domain yang unik saat menambahkan atau memeriksa pengunjung.</p>
+
+        <hr>
+        <h3>Menggunakan Endpoint GET /api/domain/delete</h3>
+        <p>Anda dapat menggunakan endpoint ini untuk menghapus data visitor berdasarkan domain dan key. Gunakan parameter query <code>domain</code> untuk menentukan domain yang ingin Anda delete, dan gunakan parameter query <code>key</code> untuk mengesahkan kunci / password yang diperlukan untuk menghapus data (keamanan tambahan).</p>
+
+        <p>Contoh penggunaan:</p>
+        <code>https://visitor.api.zeyzofc.com/api/domain/delete?domain=google.com&key=kunci_anda</code>
+        <p>Respons:</p>
+        <pre id="custom-code">
+{
+  "message": "Domain deleted successfully."
+}
+ </pre>
+        <!-- Tambahkan deskripsi endpoint lainnya di sini -->
+
+        <p class="note">Catatan: Pastikan untuk selalu menggunakan domain yang unik saat menambahkan atau memeriksa pengunjung.</p>
+
+        <hr>
+
+        <h3>Menggunakan Endpoint GET /api/views</h3>
+        <p>Anda dapat menggunakan endpoint ini untuk mendapatkan jumlah visitor harian / total pengunjung berdasarkan domain (untuk visitor harian akan ter-reset setiap harinya). Gunakan parameter query <code>domain</code> untuk menentukan domain yang ingin Anda cek.</p>
+        <p>Contoh penggunaan:</p>
+        <code>https://visitor.api.zeyzofc.com/api/views?domain=google.com</code>
+        <p>Respons:</p>
+        <pre id="custom-code">
+{
+  "domain": "google.com",
+    "total": 153454,
+    "daily": 345235236
+}
+ </pre>
+        <!-- Tambahkan deskripsi endpoint lainnya di sini -->
+
+        <p class="note">Catatan: Pastikan untuk selalu menggunakan domain yang unik saat menambahkan atau memeriksa pengunjung.</p>
+
+        <hr>
+
+        <h3>Menggunakan Endpoint GET /api/views/add</h3>
+        <p>Anda dapat menggunakan endpoint ini untuk menambahkan jumlah visitor harian / total pengunjung berdasarkan domain (untuk visitor harian akan ter-reset setiap harinya). Gunakan parameter query <code>domain</code> untuk menentukan domain yang ingin Anda tambahkan visitornya.</p>
+        <p>Contoh penggunaan:</p>
+        <code>https://visitor.api.zeyzofc.com/api/views/add?domain=google.com</code>
+        <p>Respons:</p>
+        <pre id="custom-code">
+{
+    "message": "Visitor added successfully",
+    "domain": "google.com",
+    "total": 1,
+    "daily": 1
+}
+       </pre>
+        <!-- Tambahkan deskripsi endpoint lainnya di sini -->
+
+        <p class="note">Catatan: Pastikan untuk selalu menggunakan domain yang unik saat menambahkan atau memeriksa pengunjung</p>
+    </div>
+
+    <!-- Tambahkan link Bootstrap JS di sini -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <footer class="text-center py-2 mt-5">
+        &copy; 2024 API Visitor  Zeyz
+    </footer>
+</body>
+</html>
